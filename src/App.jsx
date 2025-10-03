@@ -14,7 +14,7 @@ function App() {
             />
           </div>
           <h1 className="text-6xl md:text-8xl font-bold text-white tracking-tight">
-            Elite BISF
+            Elite BIFS
           </h1>
           <div className="flex items-center justify-center gap-3 text-purple-300">
             <Construction className="w-6 h-6 animate-pulse" />
@@ -54,7 +54,7 @@ function App() {
 
         {/* Footer */}
         <div className="pt-8 text-gray-400 text-sm">
-          <p>© 2025 Elite BISF. All rights reserved.</p>
+          <p>© 2025 Elite BIFS. All rights reserved.</p>
         </div>
       </div>
     </div>
