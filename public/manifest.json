@@ -1,0 +1,26 @@
+{
+  "name": "Elite BISF - Banking, Insurance, Stock Market & Finance Institute",
+  "short_name": "Elite BISF",
+  "description": "Premier institute offering professional courses in banking, insurance, stock market, and finance for career advancement.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e40af",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["education", "finance", "business"],
+  "lang": "en-US"
+}
