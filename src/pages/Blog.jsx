@@ -14,6 +14,7 @@ import {
   getPostsByCategory,
   getPostsByTag 
 } from '../data/blogPosts';
+import BlogHero from '../components/blog/BlogHero';
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -95,36 +96,14 @@ const Blog = () => {
 
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
-            >
-              <BookOpen className="w-16 h-16 mx-auto mb-6 text-yellow-400" />
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                BIFS <span className="text-yellow-400">Blog</span>
-              </h1>
-              <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-                Stay ahead with expert insights on banking, insurance, and financial services careers
-              </p>
-              
-              {/* Search Bar */}
-              <div className="max-w-2xl mx-auto relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search articles, topics, or keywords..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </section>
+        <BlogHero 
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+          totalPosts={filteredPosts.length}
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+        />
 
         {/* Featured Posts */}
         {featuredPosts.length > 0 && (

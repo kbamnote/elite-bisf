@@ -27,9 +27,9 @@ const Home = () => {
   return (
     <>
       <SEOHelmet
-        title="Best BIFS Course in India | Top Banking & Finance Training Institute Nagpur"
-        description="Join India's #1 BIFS training institute in Nagpur. Get certified in Banking, Insurance & Financial Services with 100% placement assistance. Expert faculty, industry curriculum."
-        keywords="best BIFS course India, BIFS course Nagpur, banking training institute, insurance course, financial services certification, job oriented BIFS program"
+        title="Elite Banking & Finance Solutions | Secure Digital Banking Services"
+        description="Transform your financial future with Elite Banking's comprehensive services. Secure digital banking, expert investment planning, and personalized financial solutions with 15+ years of trusted excellence."
+        keywords="elite banking, digital banking services, investment planning, financial advisory, secure banking, personal banking, business banking, wealth management, financial solutions"
         canonical="/"
         structuredData={[organizationData, breadcrumbData]}
       />
@@ -41,29 +41,29 @@ const Home = () => {
         </Suspense>
 
         {/* About BIFS Section */}
-        <Suspense fallback={<SectionLoader />}>
+        
           <AboutSection />
-        </Suspense>
+     
 
         {/* Courses Preview Section */}
-        <Suspense fallback={<SectionLoader />}>
+       
           <CoursesPreview />
-        </Suspense>
+   
 
         {/* Why Choose Us Section */}
-        <Suspense fallback={<SectionLoader />}>
+        
           <WhyChooseUs />
-        </Suspense>
+
 
         {/* Placement Highlights Section */}
-        <Suspense fallback={<SectionLoader />}>
+        
           <PlacementHighlights />
-        </Suspense>
+      
 
         {/* Testimonials Section */}
-        <Suspense fallback={<SectionLoader />}>
+       
           <Testimonials />
-        </Suspense>
+    
       </main>
     </>
   );

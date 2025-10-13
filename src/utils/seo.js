@@ -1,53 +1,53 @@
-// SEO utility functions for BIFS website
+// SEO utility functions for Elite Banking website
 
 export const seoConfig = {
-  siteName: 'BIFS Institute - Best Banking, Insurance & Financial Services Training',
-  siteUrl: 'https://bifsinstitute.com',
-  defaultTitle: 'Best BIFS Course in India | Top Banking & Finance Training Institute',
-  defaultDescription: 'Join India\'s #1 BIFS training institute in Nagpur. Get certified in Banking, Insurance & Financial Services with 100% placement assistance. Enroll now!',
-  defaultKeywords: 'BIFS course, banking course, insurance course, financial services training, BIFS institute Nagpur, banking job training, finance certification',
-  author: 'BIFS Institute',
-  twitterHandle: '@bifsinstitute',
-  facebookPage: 'https://facebook.com/bifsinstitute',
-  linkedinPage: 'https://linkedin.com/company/bifsinstitute',
-  instagramPage: 'https://instagram.com/bifsinstitute'
+  siteName: 'Elite Banking - Trusted Financial Services & Digital Banking Solutions',
+  siteUrl: 'https://elitebanking.com',
+  defaultTitle: 'Elite Banking & Finance Solutions | Secure Digital Banking Services',
+  defaultDescription: 'Transform your financial future with Elite Banking\'s comprehensive services. Secure digital banking, expert investment planning, and personalized financial solutions with 15+ years of trusted excellence.',
+  defaultKeywords: 'elite banking, digital banking services, investment planning, financial advisory, secure banking, personal banking, business banking, wealth management, financial solutions',
+  author: 'Elite Banking',
+  twitterHandle: '@elitebanking',
+  facebookPage: 'https://facebook.com/elitebanking',
+  linkedinPage: 'https://linkedin.com/company/elitebanking',
+  instagramPage: 'https://instagram.com/elitebanking'
 };
 
 export const generatePageSEO = (page) => {
   const seoData = {
     home: {
-      title: 'Best BIFS Course in India | Top Banking & Finance Training Institute Nagpur',
-      description: 'Join India\'s #1 BIFS training institute in Nagpur. Get certified in Banking, Insurance & Financial Services with 100% placement assistance. Expert faculty, industry curriculum.',
-      keywords: 'best BIFS course India, BIFS course Nagpur, banking training institute, insurance course, financial services certification, job oriented BIFS program',
+      title: 'Elite Banking & Finance Solutions | Secure Digital Banking Services',
+      description: 'Transform your financial future with Elite Banking\'s comprehensive services. Secure digital banking, expert investment planning, and personalized financial solutions with 15+ years of trusted excellence.',
+      keywords: 'elite banking, digital banking services, investment planning, financial advisory, secure banking, personal banking, business banking, wealth management, financial solutions',
       canonical: '/'
     },
     about: {
-      title: 'About BIFS Institute | Leading Banking & Finance Training Center Nagpur',
-      description: 'Learn about BIFS Institute - Nagpur\'s premier banking and finance training center. 10+ years experience, 500+ successful placements, industry-expert faculty.',
-      keywords: 'BIFS institute about, banking training center Nagpur, finance education, BIFS faculty, banking course achievements',
+      title: 'About Elite Banking | Trusted Financial Partner | 15+ Years Excellence',
+      description: 'Discover Elite Banking - your trusted financial partner with 15+ years of excellence. Comprehensive banking services, investment solutions, and personalized financial planning.',
+      keywords: 'about elite banking, trusted financial partner, banking excellence, financial services company, investment advisory',
       canonical: '/about'
     },
     courses: {
-      title: 'BIFS Courses | Banking, Insurance & Financial Services Training Programs',
-      description: 'Explore comprehensive BIFS courses: Foundation Program, Advanced BIFS, Job-Oriented Training. Industry-aligned curriculum with placement guarantee.',
-      keywords: 'BIFS courses, banking course syllabus, insurance training program, financial services certification, job oriented BIFS course',
+      title: 'Banking Services | Personal & Business Banking | Investment Solutions',
+      description: 'Explore Elite Banking\'s comprehensive services: Personal Banking, Investment Planning, Business Banking, and Digital Banking solutions tailored to your needs.',
+      keywords: 'banking services, personal banking, business banking, investment services, digital banking solutions, financial planning',
       canonical: '/courses'
     },
     placement: {
-    title: 'BIFS Placement | 100% Job Assistance | Banking & Finance Career Support',
-    description: '500+ students placed in top banks & financial institutions. Get guaranteed placement assistance with our BIFS training programs. View success stories.',
-    keywords: 'BIFS placement, banking job placement, finance career, BIFS job assistance, banking recruitment, financial services jobs',
+    title: 'Client Success Stories | Elite Banking Testimonials | Financial Growth',
+    description: '10,000+ satisfied clients trust Elite Banking for their financial journey. Read success stories and discover how we help achieve financial goals.',
+    keywords: 'client testimonials, banking success stories, financial growth, satisfied customers, elite banking reviews',
     canonical: '/placements'
   },
     blog: {
-      title: 'BIFS Blog | Banking & Finance Industry Insights | Career Tips',
-      description: 'Stay updated with latest banking trends, finance career tips, BIFS exam preparation guides, and industry insights from our expert faculty.',
-      keywords: 'BIFS blog, banking industry news, finance career tips, banking exam preparation, financial services trends',
+      title: 'Financial Insights Blog | Banking Tips | Investment Strategies',
+      description: 'Stay informed with Elite Banking\'s financial insights, investment strategies, banking tips, and market analysis from our expert financial advisors.',
+      keywords: 'financial blog, investment tips, banking insights, market analysis, financial planning advice, wealth management',
       canonical: '/blog'
     },
     contact: {
-      title: 'Contact BIFS Institute | Best Banking Training Center Nagpur | Admission',
-      description: 'Contact BIFS Institute for admission inquiries. Visit our Nagpur center or call for course details, fees, and batch timings. Start your banking career today!',
+      title: 'Contact Elite Banking | Get Financial Consultation | Banking Services',
+      description: 'Contact Elite Banking for personalized financial consultation. Visit our offices or schedule a meeting to discuss your banking and investment needs.',
       keywords: 'BIFS institute contact, banking course admission Nagpur, BIFS institute address, course inquiry, admission process',
       canonical: '/contact'
     }

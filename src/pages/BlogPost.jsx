@@ -1,11 +1,13 @@
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  Calendar, Clock, User, Tag, ArrowLeft, ArrowRight,
-  Share2, BookOpen, Eye, ThumbsUp, MessageCircle
+  ArrowLeft, Calendar, Clock, User, Tag, 
+  Share2, Eye, ThumbsUp, BookOpen, Star,
+  Facebook, Twitter, Linkedin, Copy, MessageCircle, ArrowRight
 } from 'lucide-react';
-import { SEOHelmet } from '../hooks/useSEO.jsx';
 import { getPostBySlug, getRelatedPosts } from '../data/blogPosts';
+import { SEOHelmet } from '../hooks/useSEO.jsx';
+import BlogPostHero from '../components/blog/BlogPostHero';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -75,104 +77,12 @@ const BlogPost = () => {
       />
 
       <div className="min-h-screen bg-gray-50">
-        {/* Back to Blog */}
-        <div className="bg-white border-b">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <Link
-              to="/blog"
-              className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Blog
-            </Link>
-          </div>
-        </div>
-
-        {/* Article Header */}
-        <article className="bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {/* Category and Featured Badge */}
-              <div className="flex items-center gap-3 mb-6">
-                <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">
-                  {post.category}
-                </span>
-                {post.featured && (
-                  <span className="bg-yellow-500 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">
-                    Featured
-                  </span>
-                )}
-              </div>
-
-              {/* Title */}
-              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                {post.title}
-              </h1>
-
-              {/* Excerpt */}
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                {post.excerpt}
-              </p>
-
-              {/* Meta Information */}
-              <div className="flex flex-wrap items-center gap-6 mb-8 pb-8 border-b border-gray-200">
-                <div className="flex items-center">
-                  <div className="text-4xl mr-3">{post.image}</div>
-                  <div>
-                    <div className="flex items-center text-gray-900 font-semibold">
-                      <User className="w-4 h-4 mr-2" />
-                      {post.author}
-                    </div>
-                    <div className="text-sm text-gray-600">{post.authorRole}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center text-gray-600">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  <span>{new Date(post.publishDate).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}</span>
-                </div>
-
-                <div className="flex items-center text-gray-600">
-                  <Clock className="w-4 h-4 mr-2" />
-                  <span>{post.readTime}</span>
-                </div>
-
-                <button
-                  onClick={sharePost}
-                  className="flex items-center text-blue-600 hover:text-blue-800 font-medium"
-                >
-                  <Share2 className="w-4 h-4 mr-2" />
-                  Share
-                </button>
-              </div>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm flex items-center"
-                  >
-                    <Tag className="w-3 h-3 mr-1" />
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </article>
+        {/* Hero Section */}
+        <BlogPostHero post={post} onShare={sharePost} />
 
         {/* Article Content */}
-        <section className="bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <article className="bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -210,7 +120,7 @@ const BlogPost = () => {
               </div>
             </motion.div>
           </div>
-        </section>
+        </article>
 
         {/* Author Bio */}
         <section className="bg-gray-50 py-12">

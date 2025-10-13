@@ -1,5 +1,5 @@
-/* Critical CSS - Load fonts with display=swap for better performance */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+/* Critical CSS - Load modern professional fonts with display=swap for better performance */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 /* Performance optimizations */
@@ -9,34 +9,48 @@
 
 /* Reduce layout shifts with font-display */
 @font-face {
-  font-family: 'Inter';
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Playfair Display';
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Poppins';
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+}
+
 :root {
-  /* Law Firm Theme Colors - Gold/Black/White Palette */
-  --color-primary: #D4AF37; /* Gold */
-  --color-primary-light: #E6C866;
-  --color-primary-dark: #B8941F;
-  --color-secondary: #1A1A1A; /* Deep Black */
-  --color-secondary-light: #2D2D2D;
-  --color-accent: #F5F5F5; /* Off White */
+  /* Banking & Finance Theme Colors - Professional Trust Palette */
+  --color-primary: #1E40AF; /* Deep Blue - Trust & Stability */
+  --color-primary-light: #3B82F6; /* Bright Blue */
+  --color-primary-dark: #1E3A8A; /* Navy Blue */
+  --color-secondary: #059669; /* Emerald Green - Growth & Prosperity */
+  --color-secondary-light: #10B981;
+  --color-secondary-dark: #047857;
+  --color-accent: #F59E0B; /* Amber - Premium & Success */
+  --color-accent-light: #FCD34D;
+  --color-accent-dark: #D97706;
+  --color-neutral-50: #F8FAFC;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-400: #94A3B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1E293B;
+  --color-neutral-900: #0F172A;
   --color-white: #FFFFFF;
-  --color-text-primary: #1A1A1A;
-  --color-text-secondary: #4A4A4A;
-  --color-text-light: #6B6B6B;
-  --color-border: #E5E5E5;
-  --color-shadow: rgba(26, 26, 26, 0.1);
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-light: #64748B;
+  --color-border: #E2E8F0;
+  --color-shadow: rgba(15, 23, 42, 0.1);
+  --color-shadow-lg: rgba(15, 23, 42, 0.15);
   
   /* Professional Spacing */
   --spacing-xs: 0.5rem;
@@ -65,38 +79,41 @@
   }
 
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Poppins', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.6;
     color: var(--color-text-primary);
     background-color: var(--color-white);
     font-size: var(--font-size-base);
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
     font-weight: 600;
     line-height: 1.2;
     color: var(--color-text-primary);
+    letter-spacing: -0.02em;
   }
 
   h1 {
     font-size: var(--font-size-5xl);
-    font-weight: 700;
+    font-weight: 900;
   }
 
   h2 {
     font-size: var(--font-size-4xl);
-    font-weight: 600;
+    font-weight: 700;
   }
 
   h3 {
     font-size: var(--font-size-3xl);
-    font-weight: 600;
+    font-weight: 700;
   }
 
   h4 {
     font-size: var(--font-size-2xl);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   h5 {
@@ -227,7 +244,7 @@
 
   /* Typography Classes */
   .heading-primary {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: var(--font-size-6xl);
     font-weight: 700;
     line-height: 1.1;
@@ -235,7 +252,7 @@
   }
 
   .heading-secondary {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: var(--font-size-4xl);
     font-weight: 600;
     line-height: 1.2;
@@ -243,7 +260,7 @@
   }
 
   .heading-tertiary {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: var(--font-size-3xl);
     font-weight: 600;
     line-height: 1.3;
@@ -362,3 +379,4 @@
     --font-size-3xl: 1.25rem;
   }
 }
+

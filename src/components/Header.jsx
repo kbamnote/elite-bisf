@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Phone, Mail, MapPin } from 'lucide-react';
-import SkipLink from './common/SkipLink';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import EnrollmentModal from './ui/EnrollmentModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCoursesOpen, setIsCoursesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -23,6 +24,23 @@ const Header = () => {
     setIsMenuOpen(false);
     setIsCoursesOpen(false);
   }, [location]);
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Modal handlers
+  const openEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(true);
+  };
+
+  const closeEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(false);
+  };
 
   const courses = [
     { name: 'BIFS Foundation Program', slug: '/courses/bifs-foundation-program' },
@@ -41,54 +59,6 @@ const Header = () => {
 
   return (
     <>
-      {/* Skip Navigation Link */}
-      <SkipLink href="#main-content" />
-
-      {/* Top Bar */}
-      <div className="bg-dark text-white py-3 hidden lg:block border-b border-gold/20">
-        <div className="container-custom">
-          <div className="flex justify-between items-center text-sm">
-            <div className="flex items-center space-x-8">
-              <div className="flex items-center space-x-2">
-                <Phone size={14} className="text-gold" />
-                <span className="text-gray-200">+91-9876543210</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail size={14} className="text-gold" />
-                <span className="text-gray-200">info@bifsinstitute.com</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin size={14} className="text-gold" />
-                <span className="text-gray-200">Nagpur, Maharashtra</span>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-gray-300 font-medium">Follow Us:</span>
-              <div className="flex space-x-4">
-                <a 
-                  href="https://facebook.com/bifsinstitute" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  aria-label="Follow us on Facebook"
-                  className="text-gray-200 hover:text-gold transition-colors duration-300"
-                >
-                  Facebook
-                </a>
-                <a 
-                  href="https://linkedin.com/company/bifsinstitute" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  aria-label="Follow us on LinkedIn"
-                  className="text-gray-200 hover:text-gold transition-colors duration-300"
-                >
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Header */}
       <header 
         className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -97,25 +67,30 @@ const Header = () => {
             : 'bg-white/98 backdrop-blur-sm'
         }`}
       >
-        <nav className="container-custom" role="navigation" aria-label="Main navigation">
-          <div className="flex justify-between items-center py-5">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" role="navigation" aria-label="Main navigation">
+          <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <Link 
               to="/" 
-              className="flex items-center space-x-4 focus:outline-none focus:ring-2 focus:ring-gold rounded-lg p-2 -m-2"
+              onClick={scrollToTop}
+              className="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-2 -m-2 group"
               aria-label="BIFS Institute Home"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-gold to-gold-dark rounded-lg flex items-center justify-center shadow-lg">
-                <span className="text-dark font-bold text-2xl font-serif">B</span>
-              </div>
+              <motion.div 
+                className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+                whileHover={{ rotate: 360, scale: 1.05 }}
+                transition={{ duration: 0.6 }}
+              >
+                <span className="text-white font-bold text-xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>B</span>
+              </motion.div>
               <div>
-                <h1 className="text-2xl font-bold text-dark font-serif">BIFS Institute</h1>
-                <p className="text-sm text-gray-600 font-medium">Banking • Insurance • Financial Services</p>
+                <h1 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300" style={{ fontFamily: 'Montserrat, sans-serif' }}>BIFS Institute</h1>
+                <p className="text-xs text-gray-600 font-medium">Banking • Insurance • Financial Services</p>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-2">
               {navItems.map((item) => (
                 <div key={item.name} className="relative">
                   {item.hasDropdown ? (
@@ -125,21 +100,22 @@ const Header = () => {
                       onMouseLeave={() => setIsCoursesOpen(false)}
                     >
                       <button
-                        className={`flex items-center space-x-1 px-4 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold ${
+                        className={`flex items-center space-x-1 px-4 py-2 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 relative overflow-hidden group ${
                           location.pathname.startsWith('/courses')
-                            ? 'text-gold bg-gold/10 border border-gold/20'
-                            : 'text-dark hover:text-gold hover:bg-gold/5'
+                            ? 'text-blue-600 bg-blue-50 border border-blue-200'
+                            : 'text-gray-700 hover:text-blue-600'
                         }`}
                         aria-expanded={isCoursesOpen}
                         aria-haspopup="menu"
                         aria-label="Courses menu"
                       >
-                        <span>{item.name}</span>
+                        <span className="relative z-10">{item.name}</span>
                         <ChevronDown 
                           size={16} 
-                          className={`transition-transform duration-300 ${isCoursesOpen ? 'rotate-180' : ''}`} 
+                          className={`transition-transform duration-300 relative z-10 ${isCoursesOpen ? 'rotate-180' : ''}`} 
                           aria-hidden="true"
                         />
+                        <div className="absolute inset-0 bg-blue-50 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                       </button>
 
                       <AnimatePresence>
@@ -149,25 +125,33 @@ const Header = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.2 }}
-                            className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-200 py-3 z-50"
+                            className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-200 py-3 z-50"
                             role="menu"
                           >
-                            {courses.map((course) => (
-                              <Link
+                            {courses.map((course, index) => (
+                              <motion.div
                                 key={course.slug}
-                                to={course.slug}
-                                className="block px-6 py-3 text-dark hover:bg-gold/10 hover:text-gold transition-all duration-300 focus:outline-none focus:bg-gold/10 focus:text-gold border-l-4 border-transparent hover:border-gold"
-                                role="menuitem"
-                                aria-label={`View ${course.name} details`}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.1 }}
                               >
-                                <div className="font-medium">{course.name}</div>
-                                <div className="text-sm text-gray-600 mt-1">Professional certification program</div>
-                              </Link>
+                                <Link
+                                  to={course.slug}
+                                  onClick={scrollToTop}
+                                  className="block px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300 focus:outline-none focus:bg-blue-50 focus:text-blue-600 border-l-4 border-transparent hover:border-blue-600"
+                                  role="menuitem"
+                                  aria-label={`View ${course.name} details`}
+                                >
+                                  <div className="font-medium">{course.name}</div>
+                                  <div className="text-sm text-gray-500 mt-1">Professional certification program</div>
+                                </Link>
+                              </motion.div>
                             ))}
                             <div className="border-t border-gray-200 mt-3 pt-3">
                               <Link
                                 to="/courses"
-                                className="block px-6 py-3 text-gold font-semibold hover:bg-gold/10 transition-all duration-300 focus:outline-none focus:bg-gold/10"
+                                onClick={scrollToTop}
+                                className="block px-6 py-3 text-blue-600 font-semibold hover:bg-blue-50 transition-all duration-300 focus:outline-none focus:bg-blue-50"
                                 role="menuitem"
                                 aria-label="View all BIFS courses"
                               >
@@ -181,31 +165,34 @@ const Header = () => {
                   ) : (
                     <Link
                       to={item.path}
-                      className={`px-4 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold ${
+                      onClick={scrollToTop}
+                      className={`relative overflow-hidden px-4 py-2 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 group ${
                         location.pathname === item.path
-                          ? 'text-gold bg-gold/10 border border-gold/20'
-                          : 'text-dark hover:text-gold hover:bg-gold/5'
+                          ? 'text-blue-600 bg-blue-50 border border-blue-200'
+                          : 'text-gray-700 hover:text-blue-600'
                       }`}
                       aria-label={`Go to ${item.name} page`}
                     >
-                      {item.name}
+                      <span className="relative z-10">{item.name}</span>
+                      <div className="absolute inset-0 bg-blue-50 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     </Link>
                   )}
                 </div>
               ))}
               
-              <Link
-                to="/courses"
-                className="btn-primary ml-4"
+              <button
+                onClick={openEnrollmentModal}
+                className="relative overflow-hidden px-6 py-2.5 ml-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 group"
                 aria-label="Enroll Now for BIFS courses"
               >
-                Enroll Now
-              </Link>
+                <span className="relative z-10">Enroll Now</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-3 rounded-lg text-dark hover:bg-gold/10 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold transition-all duration-300"
+              className="lg:hidden p-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-expanded={isMenuOpen}
               aria-label="Toggle mobile menu"
@@ -225,12 +212,17 @@ const Header = () => {
                 className="lg:hidden border-t border-gray-200 py-6 bg-white"
               >
                 <div className="space-y-3">
-                  {navItems.map((item) => (
-                    <div key={item.name}>
+                  {navItems.map((item, index) => (
+                    <motion.div 
+                      key={item.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
                       {item.hasDropdown ? (
                         <div>
                           <button
-                            className="w-full flex items-center justify-between px-4 py-3 text-left text-dark hover:bg-gold/10 hover:text-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-gold transition-all duration-300"
+                            className="w-full flex items-center justify-between px-4 py-3 text-left text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
                             onClick={() => setIsCoursesOpen(!isCoursesOpen)}
                             aria-expanded={isCoursesOpen}
                             aria-label="Toggle courses menu"
@@ -255,7 +247,8 @@ const Header = () => {
                                   <Link
                                     key={course.slug}
                                     to={course.slug}
-                                    className="block px-4 py-3 text-gray-700 hover:bg-gold/10 hover:text-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-gold transition-all duration-300 border-l-4 border-transparent hover:border-gold"
+                                    onClick={scrollToTop}
+                                    className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 border-l-4 border-transparent hover:border-blue-600"
                                     aria-label={`View ${course.name} details`}
                                   >
                                     <div className="font-medium">{course.name}</div>
@@ -269,30 +262,32 @@ const Header = () => {
                       ) : (
                         <Link
                           to={item.path}
-                          className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold ${
+                          onClick={scrollToTop}
+                          className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                             location.pathname === item.path
-                              ? 'text-gold bg-gold/10 border border-gold/20'
-                              : 'text-dark hover:text-gold hover:bg-gold/10'
+                              ? 'text-blue-600 bg-blue-50 border border-blue-200'
+                              : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                           }`}
                           aria-label={`Go to ${item.name} page`}
                         >
                           {item.name}
                         </Link>
                       )}
-                    </div>
+                    </motion.div>
                   ))}
                   
-                  <div className="pt-6 border-t border-gray-200 mt-6">
-                    <Link
-                      to="/courses"
-                      className="btn-primary w-full text-center"
+                  <div className="pt-6 border-t border-gray-200 mt-6 space-y-3">
+                    <button
+                      onClick={openEnrollmentModal}
+                      className="block w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       aria-label="Enroll Now for BIFS courses"
                     >
                       Enroll Now
-                    </Link>
+                    </button>
                     <Link
                       to="/contact"
-                      className="btn-secondary w-full text-center mt-3"
+                      onClick={scrollToTop}
+                      className="block w-full px-6 py-3 bg-white text-blue-600 text-center font-semibold rounded-lg border-2 border-blue-600 hover:bg-blue-50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       aria-label="Book Free Counseling"
                     >
                       Book Free Counseling
@@ -304,6 +299,12 @@ const Header = () => {
           </AnimatePresence>
         </nav>
       </header>
+      
+      {/* Enrollment Modal */}
+      <EnrollmentModal 
+        isOpen={isEnrollmentModalOpen} 
+        onClose={closeEnrollmentModal} 
+      />
     </>
   );
 };
