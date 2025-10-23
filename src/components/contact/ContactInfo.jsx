@@ -11,14 +11,14 @@ const ContactInfo = () => {
       icon: MapPin,
       title: 'Visit Our Campus',
       info: 'Elite BIFS Institute',
-      details: '123 Financial District, Banking Plaza, Mumbai - 400001',
+      details: '1st Floor Mohota Complex, Above State Bank Of India, Katol Road, Chhaoni Rd, Nagpur, Maharashtra, 440013',
       action: 'Get Directions',
       color: 'from-blue-500 to-blue-600'
     },
     {
       icon: Phone,
       title: 'Call Us',
-      info: '+91 98765 43210',
+      info: '+91 8855885807',
       details: 'Mon-Sat: 9:00 AM - 7:00 PM',
       action: 'Call Now',
       color: 'from-green-500 to-green-600'
@@ -26,7 +26,7 @@ const ContactInfo = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      info: 'info@elitebifs.com',
+      info: 'info@elitebifs.in',
       details: 'We respond within 24 hours',
       action: 'Send Email',
       color: 'from-purple-500 to-purple-600'
@@ -34,7 +34,7 @@ const ContactInfo = () => {
     {
       icon: MessageCircle,
       title: 'WhatsApp',
-      info: '+91 98765 43210',
+      info: '+91 8855885807',
       details: 'Quick responses & course info',
       action: 'Chat Now',
       color: 'from-emerald-500 to-emerald-600'

@@ -163,9 +163,10 @@ const ContactMap = () => {
                     <h4 className="font-semibold text-gray-900 mb-2">Complete Address</h4>
                     <p className="text-gray-700 leading-relaxed">
                       Elite BIFS Institute<br />
-                      123 Financial District, Banking Plaza<br />
-                      Fort, Mumbai - 400001<br />
-                      Maharashtra, India
+                      1st Floor Mohota Complex, Above State Bank Of India<br />
+                      Katol Road, Chhaoni Rd<br />
+                      Nagpur, Maharashtra, 440013<br />
+                      India
                     </p>
                   </div>
                 </div>

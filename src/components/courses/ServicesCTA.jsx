@@ -120,25 +120,25 @@ const ServicesCTA = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-8 text-blue-100 mb-12"
           >
             <motion.a
-              href="tel:+919876543210"
+              href="tel:+918855885807"
               whileHover={{ scale: 1.1 }}
               className="flex items-center gap-2 hover:text-emerald-400 transition-colors"
             >
               <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
                 <Phone className="w-5 h-5" />
               </div>
-              <span className="font-semibold">+91-9876543210</span>
+              <span className="font-semibold">+91 8855885807</span>
             </motion.a>
             
             <motion.a
-              href="mailto:info@elitebifs.com"
+              href="mailto:info@elitebifs.in"
               whileHover={{ scale: 1.1 }}
               className="flex items-center gap-2 hover:text-emerald-400 transition-colors"
             >
               <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
                 <Mail className="w-5 h-5" />
               </div>
-              <span className="font-semibold">info@elitebifs.com</span>
+              <span className="font-semibold">info@elitebifs.in</span>
             </motion.a>
           </motion.div>
 

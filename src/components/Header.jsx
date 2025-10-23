@@ -3,12 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import EnrollmentModal from './ui/EnrollmentModal';
+import ContactModal from './ui/ContactModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCoursesOpen, setIsCoursesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -40,6 +42,14 @@ const Header = () => {
 
   const closeEnrollmentModal = () => {
     setIsEnrollmentModalOpen(false);
+  };
+
+  const openContactModal = () => {
+    setIsContactModalOpen(true);
+  };
+
+  const closeContactModal = () => {
+    setIsContactModalOpen(false);
   };
 
   const courses = [
@@ -180,9 +190,18 @@ const Header = () => {
                 </div>
               ))}
               
+              {/* <button
+                onClick={openContactModal}
+                className="relative overflow-hidden px-6 py-2.5 ml-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 group"
+                aria-label="Contact Us for course information"
+              >
+                <span className="relative z-10">Contact Us</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-green-700 to-green-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button> */}
+              
               <button
                 onClick={openEnrollmentModal}
-                className="relative overflow-hidden px-6 py-2.5 ml-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 group"
+                className="relative overflow-hidden px-6 py-2.5 ml-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 group"
                 aria-label="Enroll Now for BIFS courses"
               >
                 <span className="relative z-10">Enroll Now</span>
@@ -304,6 +323,12 @@ const Header = () => {
       <EnrollmentModal 
         isOpen={isEnrollmentModalOpen} 
         onClose={closeEnrollmentModal} 
+      />
+      
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={closeContactModal} 
       />
     </>
   );

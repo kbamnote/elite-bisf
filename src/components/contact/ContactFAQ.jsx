@@ -97,7 +97,7 @@ const ContactFAQ = () => {
       icon: Phone,
       title: 'Call Us',
       description: 'Speak directly with our counselors',
-      action: '+91 98765 43210',
+      action: '+91 8855885807',
       color: 'from-green-500 to-emerald-600'
     },
     {

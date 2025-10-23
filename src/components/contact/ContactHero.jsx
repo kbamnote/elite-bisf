@@ -115,16 +115,16 @@ const ContactHero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto"
           >
             <motion.a
-              href="tel:+919876543210"
+              href="tel:+918855885807"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-slate-900 px-8 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center shadow-2xl hover:shadow-yellow-500/25"
             >
               <Phone className="mr-3 w-5 h-5" />
-              Call Now: +91-9876543210
+              Call Now: +91 8855885807
             </motion.a>
             <motion.a
-              href="mailto:admissions@bifsinstitute.com"
+              href="mailto:info@elitebifs.in"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center"

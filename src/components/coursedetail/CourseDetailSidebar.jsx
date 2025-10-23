@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
+import ContactModal from '../ui/ContactModal';
 
 const CourseDetailSidebar = ({ course }) => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const openContactModal = () => setIsContactModalOpen(true);
+  const closeContactModal = () => setIsContactModalOpen(false);
+
   return (
     <div className="lg:col-span-1">
       <div className="sticky top-8 space-y-6">
@@ -54,7 +61,10 @@ const CourseDetailSidebar = ({ course }) => {
               Enroll Now
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
-            <button className="w-full border-2 border-primary-600 text-primary-600 hover:bg-primary-50 py-3 px-6 rounded-lg font-semibold transition-colors duration-200">
+            <button 
+              onClick={openContactModal}
+              className="w-full border-2 border-primary-600 text-primary-600 hover:bg-primary-50 py-3 px-6 rounded-lg font-semibold transition-colors duration-200"
+            >
               Request Callback
             </button>
           </div>
@@ -74,14 +84,14 @@ const CourseDetailSidebar = ({ course }) => {
               <Phone className="w-5 h-5 text-primary-600 mr-3" />
               <div>
                 <div className="font-semibold">Call Us</div>
-                <div className="text-sm text-gray-600">+91 98765 43210</div>
+                <div className="text-sm text-gray-600">+91 8855885807</div>
               </div>
             </div>
             <div className="flex items-center">
               <Mail className="w-5 h-5 text-primary-600 mr-3" />
               <div>
                 <div className="font-semibold">Email Us</div>
-                <div className="text-sm text-gray-600">info@elitebifs.com</div>
+                <div className="text-sm text-gray-600">info@elitebifs.in</div>
               </div>
             </div>
             <div className="flex items-center">
@@ -117,6 +127,12 @@ const CourseDetailSidebar = ({ course }) => {
           </div>
         </motion.div>
       </div>
+      
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={closeContactModal} 
+      />
     </div>
   );
 };

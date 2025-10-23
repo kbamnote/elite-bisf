@@ -187,9 +187,10 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300">
-                    Plot No. 123, BIFS Complex,<br />
-                    Near IT Park, Nagpur,<br />
-                    Maharashtra - 440001
+                    1st Floor Mohota Complex,<br />
+                    Above State Bank Of India,<br />
+                    Katol Road, Chhaoni Rd,<br />
+                    Nagpur, Maharashtra, 440013
                   </p>
                 </div>
               </div>
@@ -198,19 +199,11 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-primary-400 flex-shrink-0" />
                 <div>
                   <a 
-                    href="tel:+919876543210" 
+                    href="tel:+918855885807" 
                     className="text-gray-300 hover:text-primary-400 transition-colors focus:outline-none focus:text-primary-400"
                     aria-label="Call BIFS Institute"
                   >
-                    +91-9876543210
-                  </a>
-                  <br />
-                  <a 
-                    href="tel:+917123456789" 
-                    className="text-gray-300 hover:text-primary-400 transition-colors focus:outline-none focus:text-primary-400"
-                    aria-label="Call BIFS Institute alternate number"
-                  >
-                    +91-7123456789
+                    +91 8855885807
                   </a>
                 </div>
               </div>
@@ -219,19 +212,19 @@ const Footer = () => {
                 <Mail className="w-5 h-5 text-primary-400 flex-shrink-0" />
                 <div>
                   <a 
-                    href="mailto:info@bifsinstitute.com" 
+                    href="mailto:info@elitebifs.in" 
                     className="text-gray-300 hover:text-primary-400 transition-colors focus:outline-none focus:text-primary-400"
                     aria-label="Email BIFS Institute"
                   >
-                    info@bifsinstitute.com
+                    info@elitebifs.in
                   </a>
                   <br />
                   <a 
-                    href="mailto:admissions@bifsinstitute.com" 
+                    href="mailto:" 
                     className="text-gray-300 hover:text-primary-400 transition-colors focus:outline-none focus:text-primary-400"
                     aria-label="Email BIFS Institute admissions"
                   >
-                    admissions@bifsinstitute.com
+                    
                   </a>
                 </div>
               </div>
