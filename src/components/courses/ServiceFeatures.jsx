@@ -90,7 +90,7 @@ const ServiceFeatures = () => {
               {/* Hover Effect Background */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
               
-              <div className="relative text-center p-8 rounded-2xl bg-gradient-to-br from-slate-50 to-blue-50 hover:bg-white border border-slate-200 hover:border-transparent hover:shadow-2xl transition-all duration-300">
+              <div className="relative h-75 w-75  text-center p-8 rounded-2xl bg-gradient-to-br from-slate-50 to-blue-50 hover:bg-white border border-slate-200 hover:border-transparent hover:shadow-2xl transition-all duration-300">
                 <motion.div
                   className="w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg"
                   whileHover={{ rotate: 360, scale: 1.1 }}

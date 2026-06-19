@@ -378,13 +378,13 @@ const Blog = () => {
                 Get the latest articles, career tips, and industry trends delivered to your inbox
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto border-amber-300">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                  className="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-yellow-500 border-amber-50"
                 />
-                <button className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-6 py-3 rounded-lg font-semibold transition-colors duration-300">
+                <button className="bg-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-semibold transition-colors duration-300">
                   Subscribe
                 </button>
               </div>

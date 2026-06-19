@@ -175,7 +175,7 @@ const BlogPostHero = ({ post, onShare }) => {
             transition={{ delay: 1.4, duration: 0.8 }}
             className="mt-12"
           >
-            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl max-w-2xl mx-auto">
+            {/* <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl max-w-2xl mx-auto">
               <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
                 <div className="relative z-10 text-center">
@@ -183,7 +183,7 @@ const BlogPostHero = ({ post, onShare }) => {
                   <div className="text-white text-lg font-semibold">Article Preview</div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </motion.div>
       </div>

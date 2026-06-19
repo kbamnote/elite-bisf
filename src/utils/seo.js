@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // SEO utility functions for Elite Banking website
 
 export const seoConfig = {
@@ -11,6 +13,40 @@ export const seoConfig = {
   facebookPage: 'https://facebook.com/elitebanking',
   linkedinPage: 'https://linkedin.com/company/elitebanking',
   instagramPage: 'https://instagram.com/elitebanking'
+};
+
+const Api = axios.create({
+  baseURL: 'https://elite-backend-production.up.railway.app/'
+});
+
+export const addDetail = async (detail) => {
+  try {
+    const response = await Api.post("form/create-form", detail);
+    return response.data;
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error;
+  }
+};
+
+export const submitEnrollmentForm = async (formData) => {
+  try {
+    const enrollmentData = {
+      productCompany: formData.productCompany || 'BIFS',
+      phoneNo: formData.phoneNo,
+      fullName: formData.fullName,
+      email: formData.email
+    };
+    
+    const response = await addDetail(enrollmentData);
+    console.log(response);
+    
+    return response;
+  
+  } catch (error) {
+    console.error('Enrollment submission error:', error);
+    throw error;
+  }
 };
 
 export const generatePageSEO = (page) => {
@@ -34,11 +70,11 @@ export const generatePageSEO = (page) => {
       canonical: '/courses'
     },
     placement: {
-    title: 'Client Success Stories | Elite Banking Testimonials | Financial Growth',
-    description: '10,000+ satisfied clients trust Elite Banking for their financial journey. Read success stories and discover how we help achieve financial goals.',
-    keywords: 'client testimonials, banking success stories, financial growth, satisfied customers, elite banking reviews',
-    canonical: '/placements'
-  },
+      title: 'Client Success Stories | Elite Banking Testimonials | Financial Growth',
+      description: '10,000+ satisfied clients trust Elite Banking for their financial journey. Read success stories and discover how we help achieve financial goals.',
+      keywords: 'client testimonials, banking success stories, financial growth, satisfied customers, elite banking reviews',
+      canonical: '/placements'
+    },
     blog: {
       title: 'Financial Insights Blog | Banking Tips | Investment Strategies',
       description: 'Stay informed with Elite Banking\'s financial insights, investment strategies, banking tips, and market analysis from our expert financial advisors.',

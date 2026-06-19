@@ -1,11 +1,11 @@
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { 
-  ArrowRight, 
-  Shield, 
-  CreditCard, 
-  PiggyBank, 
+import {
+  ArrowRight,
+  Shield,
+  CreditCard,
+  PiggyBank,
   TrendingUp,
   Calculator,
   Star,
@@ -16,6 +16,7 @@ import {
   Wallet,
   Sparkles
 } from 'lucide-react';
+import EnrollmentModal from '../ui/EnrollmentModal';
 
 const CoursesPreview = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -66,6 +67,7 @@ const CoursesPreview = () => {
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop"
     }
   ];
+  const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -111,6 +113,14 @@ const CoursesPreview = () => {
       ease: "easeInOut"
     }
   };
+  const openEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(true);
+  };
+
+  const closeEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(false);
+  };
+
 
   return (
     <section className="relative section-padding bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden" id="services">
@@ -143,6 +153,7 @@ const CoursesPreview = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-16"
+
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center max-w-4xl mx-auto">
@@ -156,20 +167,20 @@ const CoursesPreview = () => {
               <Sparkles className="w-5 h-5 text-blue-600" />
               <span className="text-sm font-semibold text-slate-700">World-Class Banking Services</span>
             </motion.div>
-            
- <h2 className="heading-secondary mb-8">
-  Our{" "}
-  <span className="text-gradient bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent font-bold font-poppins">
-    Banking Services
-  </span>
-</h2>
+
+            <h2 className="heading-secondary mb-8">
+              Our{" "}
+              <span className="text-gradient bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent font-bold font-poppins">
+                Banking Services
+              </span>
+            </h2>
 
 
-            <motion.p 
+            <motion.p
               variants={itemVariants}
               className="text-large text-slate-600 leading-relaxed"
             >
-              Discover our comprehensive range of banking and financial services designed to meet all your 
+              Discover our comprehensive range of banking and financial services designed to meet all your
               financial needs with security, convenience, and expert guidance at every step.
             </motion.p>
           </motion.div>
@@ -195,7 +206,7 @@ const CoursesPreview = () => {
                     transition={{ duration: 0.6 }}
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-60 group-hover:opacity-40 transition-opacity duration-300`} />
-                  
+
                   {/* Floating Icon */}
                   <motion.div
                     animate={hoveredCard === service.id ? { y: [0, -8, 0] } : {}}
@@ -249,10 +260,11 @@ const CoursesPreview = () => {
                   {/* CTA Button */}
                   <div className="pt-2">
                     <Link
-                      to="/contact"
+                      // to="/contact"
                       className={`inline-flex items-center justify-center w-full px-6 py-3.5 bg-gradient-to-r ${service.color} text-white rounded-xl font-semibold shadow-md hover:shadow-xl transition-all duration-300 relative overflow-hidden group/btn`}
                     >
-                      <span className="relative z-10 flex items-center">
+                      <span className="relative z-10 flex items-center"
+                        onClick={openEnrollmentModal}>
                         Learn More
                         <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                       </span>
@@ -296,7 +308,7 @@ const CoursesPreview = () => {
                 animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 1 } }}
                 className="absolute bottom-10 right-10 w-40 h-40 bg-emerald-400/20 rounded-full blur-2xl"
               />
-              
+
               <div className="relative z-10 max-w-3xl mx-auto">
                 <motion.div
                   initial={{ scale: 0 }}
@@ -307,18 +319,18 @@ const CoursesPreview = () => {
                 >
                   <Star className="w-16 h-16 text-yellow-400 fill-yellow-400" />
                 </motion.div>
-                
+
                 <h3 className="text-3xl md:text-4xl font-bold mb-6">
                   Ready to Transform Your Financial Future?
                 </h3>
                 <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-                  Join thousands of satisfied customers who trust us with their financial journey. 
+                  Join thousands of satisfied customers who trust us with their financial journey.
                   Get personalized banking solutions tailored to your unique needs.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Link
-                      to="/contact"
+                      onClick={openEnrollmentModal}
                       className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
                       Get Started Today
@@ -356,7 +368,7 @@ const CoursesPreview = () => {
                 className="text-center p-8 bg-white rounded-2xl shadow-lg border border-slate-200 group hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${stat.bgColor} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-                
+
                 <motion.div
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -364,7 +376,7 @@ const CoursesPreview = () => {
                 >
                   <stat.icon className="w-8 h-8 text-white" />
                 </motion.div>
-                
+
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
@@ -380,6 +392,12 @@ const CoursesPreview = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Enrollment Modal */}
+      <EnrollmentModal 
+        isOpen={isEnrollmentModalOpen} 
+        onClose={closeEnrollmentModal} 
+      />
     </section>
   );
 };

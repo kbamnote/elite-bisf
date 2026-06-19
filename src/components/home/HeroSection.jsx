@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
 import { 
   ArrowRight, 
   Shield, 
@@ -15,8 +16,12 @@ import {
   Banknote
 } from 'lucide-react';
 import OptimizedImage from '../common/OptimizedImage';
+import EnrollmentModal from '../ui/EnrollmentModal';
 
 const HeroSection = () => {
+  const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
+  const hasModalOpenedOnScroll = useRef(false);
+
   const stats = [
     { icon: Users, number: '10K+', label: 'Satisfied Clients', color: 'text-blue-600' },
     { icon: Shield, number: '15+', label: 'Years Trusted', color: 'text-emerald-600' },
@@ -81,15 +86,42 @@ const HeroSection = () => {
     }
   };
 
+  const heroSectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (hasModalOpenedOnScroll.current) return;
+
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            hasModalOpenedOnScroll.current = true;
+            setIsEnrollmentModalOpen(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    if (heroSectionRef.current) {
+      observer.observe(heroSectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 overflow-hidden">
+    <section ref={heroSectionRef} className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 overflow-hidden">
       {/* Skip Navigation Link */}
       <a href="#main-content" className="skip-nav">Skip to content</a>
       
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <OptimizedImage
-          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQzYLFzBjWcoiT4EV-DgdK9GSJ75lec1ZqJQ&s"
           alt="Modern banking and finance office with digital displays and professional atmosphere"
           className="w-full h-full object-cover"
           priority={true}
@@ -179,14 +211,14 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link
-                to="/courses"
+              <button
+                onClick={() => setIsEnrollmentModalOpen(true)}
                 className="inline-flex items-center justify-center group text-lg px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 aria-label="Start Your Banking Journey"
               >
                 Start Your Journey
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </button>
               
               <button
                 className="inline-flex items-center justify-center text-lg px-8 py-4 bg-transparent border-2 border-emerald-400 text-emerald-400 hover:bg-emerald-400 hover:text-slate-900 rounded-xl font-semibold transition-all duration-300"
@@ -220,7 +252,7 @@ const HeroSection = () => {
               {/* Main Professional Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="https://www.shutterstock.com/shutterstock/videos/10794632/thumb/1.jpg"
                   alt="Professional banking consultation with financial advisor and client discussing investment strategies"
                   className="w-full h-96 lg:h-[500px] object-cover"
                   loading="eager"
@@ -230,14 +262,14 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
                 
                 {/* Play Button for Virtual Tour */}
-                <div className="absolute inset-0 flex items-center justify-center">
+                {/* <div className="absolute inset-0 flex items-center justify-center">
                   <button
                     className="w-20 h-20 bg-blue-600/90 hover:bg-blue-600 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-400/50"
                     aria-label="Watch our banking services overview"
                   >
                     <Play className="w-8 h-8 text-white ml-1" aria-hidden="true" />
                   </button>
-                </div>
+                </div> */}
               </div>
 
               {/* Floating Achievement Cards */}
@@ -301,6 +333,12 @@ const HeroSection = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Enrollment Modal */}
+      <EnrollmentModal 
+        isOpen={isEnrollmentModalOpen} 
+        onClose={() => setIsEnrollmentModalOpen(false)} 
+      />
 
       {/* Structured Data for Hero Section */}
       <script type="application/ld+json">

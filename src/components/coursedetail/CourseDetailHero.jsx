@@ -1,11 +1,21 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  Clock, Users, Award, ArrowRight, Star, 
+import EnrollmentModal from '../ui/EnrollmentModal';
+import {
+  Clock, Users, Award, ArrowRight, Star,
   BookOpen, Download, Play, CheckCircle, TrendingUp
 } from 'lucide-react';
+import { useState } from 'react';
 
 const CourseDetailHero = ({ course }) => {
+  const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
+  const openEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(true);
+  };
+
+  const closeEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(false);
+  };
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-hidden">
       {/* Animated Background Elements */}
@@ -45,7 +55,7 @@ const CourseDetailHero = ({ course }) => {
           >
             <div className="space-y-8">
               {/* Breadcrumb */}
-              <motion.nav 
+              <motion.nav
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
@@ -94,28 +104,57 @@ const CourseDetailHero = ({ course }) => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10"
+                className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-10  "
               >
                 {[
-                  { icon: Clock, label: 'Duration', value: course.duration, color: 'from-blue-400 to-cyan-400' },
-                  { icon: Users, label: 'Students', value: '2500+', color: 'from-green-400 to-emerald-400' },
-                  { icon: Star, label: 'Rating', value: '4.8/5', color: 'from-yellow-400 to-orange-400' },
-                  { icon: Award, label: 'Level', value: course.level, color: 'from-purple-400 to-pink-400' }
+                  {
+                    icon: Clock,
+                    label: "Duration",
+                    value: course.duration,
+                    color: "from-blue-400 to-cyan-400",
+                  },
+                  {
+                    icon: Users,
+                    label: "Students",
+                    value: "2500+",
+                    color: "from-green-400 to-emerald-400",
+                  },
+                  {
+                    icon: Star,
+                    label: "Rating",
+                    value: "4.8/5",
+                    color: "from-yellow-400 to-orange-400",
+                  },
+                  {
+                    icon: Award,
+                    label: "Level",
+                    value: course.level,
+                    color: "from-purple-400 to-pink-400",
+                  },
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, scale: 0 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    className="text-center group cursor-pointer"
+                    whileHover={{ scale: 1.03, y: -5 }}
+                    className="group h-55 w-35"
                   >
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
-                      <div className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${stat.color} rounded-xl mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className="h-full min-h-[140px] bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-5 flex flex-col items-center justify-center text-center hover:bg-white/20 transition-all duration-300">
+
+                      <div
+                        className={`flex items-center justify-center w-12 h-12 bg-gradient-to-r ${stat.color} rounded-xl mb-3 group-hover:scale-110 transition-transform duration-300`}
+                      >
                         <stat.icon className="w-6 h-6 text-white" />
                       </div>
-                      <div className="text-sm text-blue-200 mb-1">{stat.label}</div>
-                      <div className="font-bold text-lg">{stat.value}</div>
+
+                      <p className="text-sm text-blue-200 font-medium mb-1">
+                        {stat.label}
+                      </p>
+
+                      <h3 className="text-lg md:text-xl font-bold text-white break-words">
+                        {stat.value}
+                      </h3>
                     </div>
                   </motion.div>
                 ))}
@@ -130,8 +169,9 @@ const CourseDetailHero = ({ course }) => {
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
-                    to="/contact"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 inline-flex items-center justify-center shadow-2xl hover:shadow-blue-500/25"
+                    onClick={openEnrollmentModal}
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-black px-8 py-4 rounded-xl font-semibold transition-all duration-300 inline-flex items-center justify-center shadow-2xl hover:shadow-blue-500/25"
+
                     aria-label={`Enroll now for ${course.name}`}
                   >
                     Enroll Now - ₹{course.price.toLocaleString()}
@@ -213,7 +253,13 @@ const CourseDetailHero = ({ course }) => {
           </motion.div>
         </div>
       </div>
+      <EnrollmentModal
+        isOpen={isEnrollmentModalOpen}
+        onClose={closeEnrollmentModal}
+        blackTheme={true}
+      />
     </section>
+
   );
 };
 

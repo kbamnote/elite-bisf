@@ -1,5 +1,9 @@
 import { motion } from 'framer-motion';
 import { Quote, Building2, ExternalLink } from 'lucide-react';
+import priyaImg from '../../assets/placement/priya.jpg';
+import rahulImg from '../../assets/placement/rahul.jpg';
+import snehaImg from '../../assets/placement/sneha.png';
+import amitImg from '../../assets/placement/amit.jpg';
 
 const SuccessStories = () => {
   const successStories = [
@@ -8,7 +12,7 @@ const SuccessStories = () => {
       course: 'Elite Banking Premium',
       company: 'HDFC Bank',
       package: '15% Returns',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80',
+      image: priyaImg,
       story: 'Elite Banking transformed my financial journey completely. The personalized investment strategies helped me achieve exceptional returns.',
       location: 'Mumbai',
       linkedin: '#'
@@ -18,7 +22,7 @@ const SuccessStories = () => {
       course: 'Investment Advisory',
       company: 'ICICI Bank',
       package: '18% Returns',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
+      image: rahulImg,
       story: 'The comprehensive financial planning and expert guidance at Elite Banking prepared me well for wealth building. Highly recommended!',
       location: 'Delhi',
       linkedin: '#'
@@ -28,7 +32,7 @@ const SuccessStories = () => {
       course: 'Digital Banking',
       company: 'Axis Bank',
       package: '12% Returns',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b332c1cd?w=400&q=80',
+      image: snehaImg,
       story: 'Thanks to Elite Banking excellent digital platform, I achieved my financial goals within 2 years of starting my investment journey.',
       location: 'Bangalore',
       linkedin: '#'
@@ -38,7 +42,7 @@ const SuccessStories = () => {
       course: 'Wealth Management',
       company: 'SBI',
       package: '20% Returns',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80',
+      image: amitImg,
       story: 'The industry-leading wealth management strategies helped me build a diversified portfolio. Great investment in my financial future!',
       location: 'Chennai',
       linkedin: '#'
@@ -110,7 +114,7 @@ const SuccessStories = () => {
               whileHover={{ y: -10 }}
               className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 group"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-80 overflow-hidden">
                 <img
                   src={story.image}
                   alt={story.name}

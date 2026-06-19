@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { 
-  MapPin, Navigation, Car, Train, 
+import {
+  MapPin, Navigation, Car, Train,
   Bus, Clock, Phone, ExternalLink
 } from 'lucide-react';
 
@@ -72,87 +72,32 @@ const ContactMap = () => {
                     <p className="text-gray-600">Elite BIFS Institute Campus</p>
                   </div>
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-colors duration-200"
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=EEE+Technologies+Nagpur"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Navigation className="w-4 h-4 mr-2" />
-                  Get Directions
-                </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-colors duration-200"
+                  >
+                    <Navigation className="w-4 h-4 mr-2" />
+                    Get Directions
+                  </motion.button>
+                </a>
               </div>
 
               {/* Interactive Map Placeholder */}
+              {/* Google Map */}
               <div className="relative bg-white rounded-xl overflow-hidden shadow-inner border-2 border-gray-200 mb-6">
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-200 flex items-center justify-center">
-                  {/* Map Placeholder with Interactive Elements */}
-                  <div className="relative w-full h-full">
-                    {/* Background Pattern */}
-                    <div className="absolute inset-0 opacity-20">
-                      <div className="grid grid-cols-8 grid-rows-6 h-full w-full">
-                        {Array.from({ length: 48 }).map((_, i) => (
-                          <div key={i} className="border border-gray-300"></div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Main Location Marker */}
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.8, delay: 0.5 }}
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    >
-                      <div className="relative">
-                        <motion.div
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                          className="w-6 h-6 bg-red-500 rounded-full border-4 border-white shadow-lg"
-                        ></motion.div>
-                        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap">
-                          Elite BIFS Institute
-                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
-                        </div>
-                      </div>
-                    </motion.div>
-
-                    {/* Nearby Landmarks */}
-                    {[
-                      { name: 'RBI', position: 'top-1/3 left-1/3' },
-                      { name: 'BSE', position: 'top-2/3 right-1/3' },
-                      { name: 'SBI HQ', position: 'bottom-1/3 left-1/4' }
-                    ].map((landmark, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.6, delay: 0.8 + index * 0.2 }}
-                        className={`absolute ${landmark.position}`}
-                      >
-                        <div className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow-md"></div>
-                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
-                          {landmark.name}
-                        </div>
-                      </motion.div>
-                    ))}
-
-                    {/* Roads */}
-                    <div className="absolute inset-0">
-                      <div className="absolute top-1/2 left-0 right-0 h-2 bg-gray-400 opacity-60"></div>
-                      <div className="absolute top-0 bottom-0 left-1/2 w-2 bg-gray-400 opacity-60"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Map Controls */}
-                <div className="absolute top-4 right-4 flex flex-col space-y-2">
-                  <button className="p-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <span className="text-lg font-bold">+</span>
-                  </button>
-                  <button className="p-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <span className="text-lg font-bold">-</span>
-                  </button>
-                </div>
+                <iframe
+                  title="Elite BIFS Institute Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.6144845071753!2d79.07600197413984!3d21.167735082992955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c1db24c7666b%3A0x609f63d11e6ae80e!2sEEE%20Technologies!5e0!3m2!1sen!2sin!4v1781676859065!5m2!1sen!2sin"
+                  className="w-full h-[450px]"
+                  loading="lazy"
+                  allowFullScreen
+                />
               </div>
 
               {/* Address Details */}

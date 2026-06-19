@@ -1,9 +1,11 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import EnrollmentModal from '../ui/EnrollmentModal';
 
 const AboutHero = () => {
   const heroRef = useRef(null);
+  const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
 
   const { scrollYProgress: heroProgress } = useScroll({
     target: heroRef,
@@ -131,6 +133,7 @@ const AboutHero = () => {
           className="flex flex-wrap justify-center gap-6"
         >
           <motion.button
+            onClick={() => setIsEnrollmentModalOpen(true)}
             whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(59, 130, 246, 0.4)' }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-full font-semibold text-lg flex items-center gap-2 shadow-xl"
@@ -161,6 +164,12 @@ const AboutHero = () => {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Enrollment Modal */}
+      <EnrollmentModal 
+        isOpen={isEnrollmentModalOpen} 
+        onClose={() => setIsEnrollmentModalOpen(false)} 
+      />
     </motion.section>
   );
 };

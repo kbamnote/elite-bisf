@@ -1,7 +1,14 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Phone, Shield, Award, Heart, Rocket, GraduationCap } from 'lucide-react';
+import { useState } from 'react';
+import EnrollmentModal from '../ui/EnrollmentModal';
+import { useNavigate } from 'react-router-dom';
 
 const PlacementsCTA = () => {
+  const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
+  const navigate = useNavigate();
+
+
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900">
@@ -54,6 +61,7 @@ const PlacementsCTA = () => {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
             <motion.button
+              onClick={() => setIsEnrollmentModalOpen(true)}
               whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(251, 191, 36, 0.4)' }}
               whileTap={{ scale: 0.95 }}
               className="px-10 py-5 bg-gradient-to-r from-yellow-400 to-orange-400 text-slate-900 rounded-full font-bold text-lg flex items-center justify-center shadow-2xl hover:shadow-yellow-500/50 transition-all duration-300"
@@ -63,6 +71,7 @@ const PlacementsCTA = () => {
             </motion.button>
             
             <motion.button
+            onClick={()=>navigate('/contact')}
               whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
               whileTap={{ scale: 0.95 }}
               className="px-10 py-5 bg-white/10 backdrop-blur-sm text-white rounded-full font-bold text-lg border-2 border-white/30 flex items-center justify-center hover:border-white/50 transition-all duration-300"
@@ -99,6 +108,12 @@ const PlacementsCTA = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Enrollment Modal */}
+      <EnrollmentModal 
+        isOpen={isEnrollmentModalOpen} 
+        onClose={() => setIsEnrollmentModalOpen(false)} 
+      />
     </section>
   );
 };

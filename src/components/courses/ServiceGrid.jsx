@@ -1,12 +1,22 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, CheckCircle, Star, BookOpen, Briefcase, 
-  TrendingUp, Shield, Calculator, Award, LineChart, 
+import {
+  ArrowRight, CheckCircle, Star, BookOpen, Briefcase,
+  TrendingUp, Shield, Calculator, Award, LineChart,
   Building2, Users, Target
 } from 'lucide-react';
+import EnrollmentModal from '../ui/EnrollmentModal';
+import { useState } from 'react';
 
 const ServiceGrid = () => {
+  const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
+  const openEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(true);
+  };
+
+  const closeEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(false);
+  };
   const services = [
     {
       id: 'bifs-foundation',
@@ -183,7 +193,8 @@ const ServiceGrid = () => {
                 {/* CTA Buttons */}
                 <div className="space-y-3">
                   <Link
-                    to={`/services/${service.slug}`}
+                    // to={`/services/${service.slug}`}
+                    onClick={openEnrollmentModal}
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center group"
                     aria-label={`Learn more about ${service.title}`}
                   >
@@ -191,6 +202,7 @@ const ServiceGrid = () => {
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <button
+                  onClick={openEnrollmentModal}
                     className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 py-3 px-6 rounded-lg font-semibold transition-colors duration-200"
                     aria-label={`Get started with ${service.title}`}
                   >
@@ -202,6 +214,10 @@ const ServiceGrid = () => {
           ))}
         </motion.div>
       </div>
+      <EnrollmentModal
+        isOpen={isEnrollmentModalOpen}
+        onClose={closeEnrollmentModal}
+      />
     </section>
   );
 };

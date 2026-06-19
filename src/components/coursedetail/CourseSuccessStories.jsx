@@ -1,5 +1,11 @@
 import { motion } from 'framer-motion';
 import { Quote, Building2, MapPin, Star } from 'lucide-react';
+import EnrollmentModal from '../ui/EnrollmentModal';
+import { useState } from 'react';
+import ArjunImg from '../../assets/placement/arjun.jpg' 
+import PriyaImg from '../../assets/placement/priya.jpg'
+import RohitImg from '../../assets/placement/rohit.jpg'
+
 
 const CourseSuccessStories = ({ course }) => {
   // Course-specific success stories based on the course type
@@ -10,7 +16,7 @@ const CourseSuccessStories = ({ course }) => {
         role: 'Senior Banking Associate',
         company: 'HDFC Bank',
         package: '₹12.5 LPA',
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
+        image: ArjunImg,
         story: `The ${courseName} program gave me comprehensive knowledge of banking operations. The practical training and industry insights helped me secure a senior position at HDFC Bank.`,
         location: 'Mumbai',
         rating: 5,
@@ -18,12 +24,12 @@ const CourseSuccessStories = ({ course }) => {
       },
       {
         name: 'Priya Sharma',
-        role: 'Financial Analyst',
-        company: 'ICICI Bank',
+        role: 'Elite Banking Premium',
+        company: 'HDFC Bank',
         package: '₹10.8 LPA',
-        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80',
+        image: PriyaImg,
         story: `Thanks to the excellent curriculum and expert faculty, I was able to transition from a different field into banking. The ${courseName} course prepared me perfectly for the industry.`,
-        location: 'Delhi',
+        location: 'Mumbai',
         rating: 5,
         courseCompletion: '2023'
       },
@@ -32,7 +38,7 @@ const CourseSuccessStories = ({ course }) => {
         role: 'Insurance Specialist',
         company: 'LIC of India',
         package: '₹9.2 LPA',
-        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80',
+        image: RohitImg,
         story: `The practical approach and real-world case studies in ${courseName} helped me understand the insurance sector deeply. Now I'm successfully managing a portfolio of high-value clients.`,
         location: 'Bangalore',
         rating: 5,
@@ -40,6 +46,14 @@ const CourseSuccessStories = ({ course }) => {
       }
     ];
     return baseStories;
+  };
+  const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
+  const openEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(true);
+  };
+
+  const closeEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(false);
   };
 
   const successStories = getSuccessStories(course.name);
@@ -116,7 +130,7 @@ const CourseSuccessStories = ({ course }) => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                
+
                 {/* Package Badge */}
                 <div className="absolute top-4 right-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
                   {story.package}
@@ -182,6 +196,8 @@ const CourseSuccessStories = ({ course }) => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={openEnrollmentModal}
+              
               className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
             >
               Enroll Now
@@ -189,6 +205,10 @@ const CourseSuccessStories = ({ course }) => {
           </div>
         </motion.div>
       </div>
+      <EnrollmentModal 
+        isOpen={isEnrollmentModalOpen} 
+        onClose={closeEnrollmentModal} 
+      />
     </section>
   );
 };

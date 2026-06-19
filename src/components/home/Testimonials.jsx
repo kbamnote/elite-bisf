@@ -10,6 +10,12 @@ import {
   MapPin,
   Calendar
 } from 'lucide-react';
+import priyaImg from '../../assets/placement/priya.jpg';
+import rahulImg from '../../assets/placement/rahul.jpg';
+import snehaImg from '../../assets/placement/sneha.png';
+import amitImg from '../../assets/placement/amit.jpg';
+import kavitaImg from '../../assets/placement/kavita.jpg';
+import rajeshImg from '../../assets/placement/rajesh.png';
 
 const Testimonials = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -24,7 +30,7 @@ const Testimonials = () => {
       location: 'Nagpur',
       course: 'Advanced BIFS Program',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      image: priyaImg,
       testimonial: 'BIFS Institute completely transformed my career. The practical training approach and industry-expert faculty helped me understand banking operations thoroughly. The placement support was exceptional - they prepared me for interviews and helped me land my dream job at HDFC Bank.',
       package: '₹4.2L',
       joinDate: 'Jan 2023',
@@ -38,7 +44,7 @@ const Testimonials = () => {
       location: 'Mumbai',
       course: 'Job-Oriented BIFS',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      image: rahulImg,
       testimonial: 'The comprehensive curriculum at BIFS Institute covered all aspects of insurance and financial services. The hands-on training with real case studies gave me the confidence to excel in my role. I highly recommend this institute to anyone looking to build a career in BIFS.',
       package: '₹3.8L',
       joinDate: 'Mar 2023',
@@ -52,7 +58,7 @@ const Testimonials = () => {
       location: 'Pune',
       course: 'BIFS Foundation',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      image: snehaImg,
       testimonial: 'As a fresher, I was worried about getting into the financial services sector. BIFS Institute not only provided excellent training but also boosted my confidence. The mock interviews and personality development sessions were incredibly helpful. Got placed with a great package!',
       package: '₹5.1L',
       joinDate: 'Feb 2023',
@@ -66,7 +72,7 @@ const Testimonials = () => {
       location: 'Nagpur',
       course: 'Advanced BIFS Program',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      image: amitImg,
       testimonial: 'The faculty at BIFS Institute brings real industry experience to the classroom. Their teaching methodology is practical and engaging. The institute\'s strong industry connections helped me get direct interviews with top banks. Truly grateful for this opportunity.',
       package: '₹4.5L',
       joinDate: 'Apr 2023',
@@ -80,7 +86,7 @@ const Testimonials = () => {
       location: 'Delhi',
       course: 'Job-Oriented BIFS',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      image: kavitaImg,
       testimonial: 'BIFS Institute exceeded my expectations in every way. The course content is updated with latest industry trends, and the practical training sessions were invaluable. The placement team worked tirelessly to ensure I got the best opportunities. Highly recommended!',
       package: '₹4.8L',
       joinDate: 'May 2023',
@@ -94,7 +100,7 @@ const Testimonials = () => {
       location: 'Bangalore',
       course: 'Advanced BIFS Program',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      image: rajeshImg,
       testimonial: 'The leadership and management modules in the Advanced BIFS Program were exceptional. BIFS Institute not only taught me technical skills but also developed my leadership abilities. Today, I\'m successfully managing a team of 15 people. Thank you, BIFS Institute!',
       package: '₹6.2L',
       joinDate: 'Jun 2023',

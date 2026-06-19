@@ -146,7 +146,7 @@ const AboutContent = () => {
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80"
+                  src="https://media.istockphoto.com/id/1475087566/photo/co-workers-gathered-in-an-office-cubicle-working-and-discussing-using-laptop-and-documents.jpg?s=612x612&w=0&k=20&c=4TrkgyCHv3pZUbW25YkOyK1uQsajzsxsNpFhikQ31uY="
                   alt="Financial planning session"
                   className="w-full h-full object-cover"
                 />

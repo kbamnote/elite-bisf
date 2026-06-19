@@ -15,10 +15,16 @@ import {
   Briefcase,
   Quote
 } from 'lucide-react';
+import priyaImg from '../../assets/placement/priya.jpg';
+import rahulImg from '../../assets/placement/rahul.jpg';
+import snehaImg from '../../assets/placement/sneha.png';
+import amitImg from '../../assets/placement/amit.jpg';
+import EnrollmentModal from '../ui/EnrollmentModal';
 
 const PlacementHighlights = () => {
   const [activeStory, setActiveStory] = useState(0);
   const [countStarted, setCountStarted] = useState(false);
+  const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
 
   const placementStats = [
     {
@@ -79,7 +85,7 @@ const PlacementHighlights = () => {
     },
     { 
       name: 'SBI', 
-      logo: 'https://images.unsplash.com/photo-1565514158740-64d5082f46f6?w=120&h=60&fit=crop',
+      logo: 'https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/images/blog/mobile-banking/how-new-age-banking-is-transforming-the-banking-industry-717x404.jpg',
       sector: 'Banking',
       color: 'from-blue-600 to-indigo-600'
     },
@@ -109,7 +115,7 @@ const PlacementHighlights = () => {
       role: 'Banking Associate',
       company: 'HDFC Bank',
       package: '₹4.2L',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop',
+      image: priyaImg,
       testimonial: 'BIFS Institute transformed my career. The practical training and placement support helped me land my dream job in banking.',
       course: 'Advanced BIFS Program',
       location: 'Nagpur',
@@ -120,7 +126,7 @@ const PlacementHighlights = () => {
       role: 'Insurance Advisor',
       company: 'LIC of India',
       package: '₹3.8L',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop',
+      image: rahulImg,
       testimonial: 'The comprehensive curriculum and expert faculty at BIFS Institute gave me the confidence to excel in the insurance sector.',
       course: 'Job-Oriented BIFS',
       location: 'Mumbai',
@@ -131,12 +137,13 @@ const PlacementHighlights = () => {
       role: 'Financial Consultant',
       company: 'Bajaj Finserv',
       package: '₹5.1L',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
+      image: snehaImg,
       testimonial: 'Thanks to BIFS Institute, I not only got placed but also received a higher package than expected. Highly recommended!',
       course: 'BIFS Foundation',
       location: 'Pune',
       gradient: 'from-purple-500 to-purple-600'
-    }
+    },
+  
   ];
 
   const placementProcess = [
@@ -577,7 +584,7 @@ const PlacementHighlights = () => {
                   whileHover={{ y: -8 }}
                   className="relative"
                 >
-                  <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center group hover:shadow-xl transition-all duration-300">
+                  <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center group hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
                     {/* Step Number with Icon */}
                     <div className="relative inline-block mb-6">
                       <motion.div
@@ -593,8 +600,10 @@ const PlacementHighlights = () => {
                     </div>
 
                     {/* Content */}
-                    <h4 className="text-xl font-bold text-slate-900 mb-3">{process.title}</h4>
-                    <p className="text-slate-600 leading-relaxed">{process.description}</p>
+                    <div className="flex-grow flex flex-col justify-center">
+                      <h4 className="text-xl font-bold text-slate-900 mb-3">{process.title}</h4>
+                      <p className="text-slate-600 leading-relaxed">{process.description}</p>
+                    </div>
                   </div>
 
                   {/* Connector Arrow */}
@@ -646,6 +655,7 @@ const PlacementHighlights = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <motion.button
+                    onClick={() => setIsEnrollmentModalOpen(true)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition-colors duration-300 shadow-lg"
@@ -666,6 +676,12 @@ const PlacementHighlights = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Enrollment Modal */}
+      <EnrollmentModal 
+        isOpen={isEnrollmentModalOpen} 
+        onClose={() => setIsEnrollmentModalOpen(false)} 
+      />
     </section>
   );
 };

@@ -75,7 +75,7 @@ const TopRecruiters = () => {
               className="relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
-              <div className="relative bg-slate-50 p-6 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-slate-200">
+              <div className="relative h-70 w-70 bg-slate-50 p-6 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-slate-200">
                 <div className="aspect-video mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
                   <img 
                     src={company.logo} 

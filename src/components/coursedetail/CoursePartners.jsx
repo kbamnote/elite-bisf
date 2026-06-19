@@ -86,20 +86,32 @@ const CoursePartners = ({ course }) => {
               className="relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
-              <div className="relative bg-slate-50 p-6 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-slate-200 group-hover:border-blue-200">
-                <div className="aspect-video mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
-                  <img 
-                    src={company.logo} 
+              <div className="relative bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:bg-white hover:shadow-2xl hover:border-blue-200 transition-all duration-300 flex flex-col h-full">
+
+                {/* Logo Section */}
+                <div className="h-40 flex items-center justify-center rounded-lg overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 mb-4">
+                  <img
+                    src={company.logo}
                     alt={`${company.name} logo`}
-                    className="w-full h-full object-cover"
+                    className="max-h-full max-w-full object-contain p-4"
                   />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2 text-center">{company.name}</h3>
-                <p className="text-sm text-slate-600 text-center mb-2">{company.sector}</p>
-                <div className="text-center">
-                  <span className="inline-block px-3 py-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-semibold rounded-full">
-                    {company.positions}
-                  </span>
+
+                {/* Content Section */}
+                <div className="flex flex-col flex-grow text-center">
+                  <h3 className="font-bold text-slate-900 text-lg min-h-[56px] flex items-center justify-center">
+                    {company.name}
+                  </h3>
+
+                  <p className="text-sm text-slate-600 mb-4 min-h-[40px] flex items-center justify-center">
+                    {company.sector}
+                  </p>
+
+                  <div className="mt-auto">
+                    <span className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-semibold rounded-full">
+                      {company.positions}
+                    </span>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -118,8 +130,8 @@ const CoursePartners = ({ course }) => {
               Direct Industry Connections
             </h3>
             <p className="text-slate-600 mb-6 leading-relaxed">
-              Our {course.name} program maintains strong partnerships with leading financial institutions. 
-              These partnerships ensure our curriculum stays current with industry needs and provide direct 
+              Our {course.name} program maintains strong partnerships with leading financial institutions.
+              These partnerships ensure our curriculum stays current with industry needs and provide direct
               pathways to employment opportunities.
             </p>
             <div className="grid md:grid-cols-3 gap-6 text-center">

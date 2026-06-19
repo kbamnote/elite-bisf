@@ -1,9 +1,18 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Mail, Shield, Award, Heart, Zap, Calculator } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
+import EnrollmentModal from '../ui/EnrollmentModal';
 
 const ServicesCTA = () => {
+  const [isEnrollmentModalOpen, setIsEnrollmentModalOpen] = useState(false);
+  const openEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(true);
+  };
+
+  const closeEnrollmentModal = () => {
+    setIsEnrollmentModalOpen(false);
+  };
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900">
@@ -27,7 +36,7 @@ const ServicesCTA = () => {
         {[...Array(15)].map((_, i) => {
           const icons = [Calculator, Shield, Award, Heart, Zap];
           const IconComponent = icons[Math.floor(Math.random() * icons.length)];
-          
+
           return (
             <motion.div
               key={i}
@@ -79,7 +88,7 @@ const ServicesCTA = () => {
             Ready to Launch Your BIFS Career?
           </h2>
           <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join thousands of successful BIFS professionals who have built rewarding careers in banking and finance. 
+            Join thousands of successful BIFS professionals who have built rewarding careers in banking and finance.
             Start your BIFS journey today with guaranteed placement support!
           </p>
 
@@ -89,20 +98,21 @@ const ServicesCTA = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                to="/contact"
+                // to="/contact"
+                onClick={openEnrollmentModal}
                 className="px-10 py-5 bg-gradient-to-r from-emerald-400 to-blue-400 text-slate-900 rounded-full font-bold text-lg flex items-center justify-center shadow-2xl hover:shadow-emerald-500/50 transition-all duration-300"
               >
                 Enroll Now
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </motion.div>
-            
+
             <motion.div
               whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                to="/placements"
+                to="/contact"
                 className="px-10 py-5 bg-white/10 backdrop-blur-sm text-white rounded-full font-bold text-lg border-2 border-white/30 flex items-center justify-center hover:border-white/50 transition-all duration-300"
               >
                 <Phone className="mr-2 w-5 h-5" />
@@ -129,7 +139,7 @@ const ServicesCTA = () => {
               </div>
               <span className="font-semibold">+91 8855885807</span>
             </motion.a>
-            
+
             <motion.a
               href="mailto:info@elitebifs.in"
               whileHover={{ scale: 1.1 }}
@@ -170,6 +180,10 @@ const ServicesCTA = () => {
           </motion.div>
         </motion.div>
       </div>
+      <EnrollmentModal
+        isOpen={isEnrollmentModalOpen}
+        onClose={closeEnrollmentModal}
+      />
     </section>
   );
 };
